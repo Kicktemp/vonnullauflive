@@ -1,0 +1,29 @@
+{
+  "name": "vonnullauflive",
+  "version": "1.0.0",
+  "description": "Presentation about creating Joomla Templates",
+  "main": "_site/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kicktemp/vonnullauflive.git"
+  },
+  "author": "Niels Nübel <niels@kicktemp.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kicktemp/vonnullauflive/issues"
+  },
+  "homepage": "https://github.com/kicktemp/vonnullauflive#readme",
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-shell": "^0.5.2",
+    "gulp-rename": "^1.2.2",
+    "lodash": "^4.14.0"
+  },
+  "dependencies": {
+    "reveal.js": "^3.7.0"
+  }
+}
