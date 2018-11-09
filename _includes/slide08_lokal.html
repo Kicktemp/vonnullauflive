@@ -1,0 +1,126 @@
+<section id="templates">
+    <h1>Lokale Testumgebung</h1>
+    <aside class="notes">
+        Was benutzt ihr so?
+    </aside>
+</section>
+<section style="text-align: left;">
+    <h2>mein Setup</h2>
+    <ul>
+        <li>LAMP <span class="fragment">(Linux, Apache, MySQL, PHP)</span></li>
+        <li class="fragment">vhosts</li>
+        <li class="fragment">unterschiedliche PHP-Versionen (5.6, 7.0, 7.1, 7.2)</li>
+        <li class="fragment">composer, git, node</li>
+        <li class="fragment">XDebug</li>
+        <li class="fragment">docker Container (wie Server)</li>
+    </ul>
+    <aside class="notes">
+        Mac
+    </aside>
+</section>
+<section>
+    <h3 class="noupper">macOS Local Development Setup</h3>
+    <div>
+    <p style="width: 50%; text-align: center; float: left;">
+        <img src="{{ site.baseurl }}/images/rene.jpeg" height="200">
+        <br><a href="https://www.renekreijveld.nl/" target="_blank">Rene Kreijveld</a></p>
+    <p style="width: 50%; text-align: center; float: left;">
+        <img src="{{ site.baseurl }}/images/roland.jpg" height="200">
+        <br><a href="https://rolandd.com/" target="_blank">Roland Dalmulder</a>
+    </p>
+    </div>
+    <a href="https://github.com/renekreijveld/macOS-Local-Development-Setup" target="_blank">https://github.com/renekreijveld/macOS-Local-Development-Setup</a>
+</section>
+<section data-transition="none">
+    <pre class=""><code class="hljs html" data-trim data-fragment>
+<Virtualhost *:80>
+    DocumentRoot "/Users/niels/Development/kicktemp/starter/<mark class="fragment highlight-blue" data-fragment-index="1">dist</mark>"
+    ServerName starter.test
+    ErrorLog "/Users/niels/Development/kicktemp/starter/<mark class="fragment highlight-blue" data-fragment-index="2">errorlogs</mark>/error.log"
+    CustomLog "/Users/niels/Development/kicktemp/starter/<mark class="fragment highlight-blue" data-fragment-index="2">errorlogs</mark>/access.log" combined
+</Virtualhost>
+</code></pre>
+    <p>/usr/local/etc/httpd/extra/httpd-vhosts.conf</p>
+</section>
+<section data-transition="none">
+    <h1>Projekt anlegen</h1>
+    <pre class=""><code class="hljs html" data-trim data-fragment>
+$ mkdir ~/Development/kicktemp/starter
+$ cd ~/Development/kicktemp/starter
+$ git clone git@github.com:nielsnuebel/starter.git dist
+</code></pre>
+    <p>/usr/local/etc/httpd/extra/httpd-vhosts.conf</p>
+</section>
+<section data-transition="none">
+    <h2>errorlogs Ordner anlegen</h2>
+    <pre class=""><code class="hljs shell" data-trim>
+$ sudo apachectl -k restart
+(2)No such file or directory: AH02291: Cannot access directory '/Users/niels/Development/kicktemp/starter/errorlogs/' for error log of vhost defined at /usr/local/etc/httpd/extra/httpd-vhosts.conf:357
+AH00014: Configuration check failed
+</code></pre>
+<pre class=""><code class="hljs html" data-trim data-fragment>
+$ mkdir ~/Development/kicktemp/starter/errorlogs
+</code></pre>
+</section>
+<section data-state="hidekick">
+    <h2 class="noupper">configuration.php fehlt</h2>
+    <img src="{{ site.baseurl }}/images/missingconfig.jpg" width="700">
+</section>
+<section data-transition="none">
+    <h2>Config Kopieren</h2>
+    <pre class=""><code class="hljs shell" data-trim>
+$ sshstarter
+$ cd html/joomla
+$ cp configuration.php configuration_server.php
+</code></pre>
+</section>
+<section data-state="joomlared">
+    <h1 class="noupper">Passwörter etc. entfernen</h1>
+    <blockquote class="fragment fade visible current-fragment" data-fragment-index="0">configuration_server.php</blockquote>
+    <pre class="fragment fade" data-fragment-index="1"><code class="hljs shell" data-trim data-fragment>
+$ vi configuration_server.php
+$ <mark class="fragment highlight-blue" data-fragment-index="2">cat configuration_server.php</mark>
+$ git add configuration_server.php && git commit -m "add configuration_server.php"
+$ git push origin master
+</code></pre>
+</section>
+
+<section>
+    <h1 class="noupper">Lokal einrichten</h1>
+    <pre class=""><code class="hljs shell" data-trim data-fragment>
+$ cd /Users/niels/Development/kicktemp/starter/dist
+$ cp configuration_server.php configuration.php
+$ cd /Users/niels/Development/kicktemp/starter
+$ open -a PhpStorm .
+</code></pre>
+</section>
+<section data-state="hidekick">
+    <h2 class="noupper">PhpStorm</h2>
+    <img src="{{ site.baseurl }}/images/phpstorm.jpg" width="300">
+</section>
+<section data-state="joomlared">
+    <h1 class="noupper">Externer Datenbank Zugriff</h1>
+    <blockquote class="fragment fade visible current-fragment" data-fragment-index="0">Bitte nur in der Entwicklung machen.</blockquote>
+</section>
+<section style="text-align: left;">
+    <h2 class="noupper">Server Anforderung</h2>
+    <ul>
+        <li>LAMP <span>(Linux, Apache, MySQL, PHP)</span></li>
+        <li>Shell Zugriff</li>
+        <li>SSH</li>
+        <li>git</li>
+        <li>rsync</li>
+        <li class="fragment">Externer Datenbank Zugriff</li>
+    </ul>
+    <aside class="notes">
+        Mac
+    </aside>
+</section>
+<section>
+    <h2 class="noupper">Wie bekommen wir Änderungen auf den Server?</h2>
+    <blockquote class="fragment fade visible current-fragment" data-fragment-index="0">per Console Lokal und auf dem Server</blockquote>
+</section>
+<section data-transition="zoom" data-background="#76bd1d" data-background-transition="zoom">
+    <h2 class="noupper">GitHub Webhook & KickDeploy</h2>
+    <blockquote class="fragment fade visible current-fragment" data-fragment-index="0"><a href="https://github.com/nielsnuebel/kickdeploy" target="_blank">https://github.com/nielsnuebel/kickdeploy</a></blockquote>
+</section>

@@ -1,0 +1,56 @@
+<section id="joomlaeinrichten">
+    <h1 class="noupper">Joomla einrichten</h1>
+    <aside class="notes">
+        Was benutzt ihr so?
+    </aside>
+</section>
+<section id="konfiguration">
+    <h2 class="noupper">Konfiguration: Site</h2>
+    <ul>
+        <li>Name der Website checken</li>
+        <li>Inline-Bearbeitung: Keine</li>
+        <li>Listenlänge: 100</li>
+        <li>Joomla-Version anzeigen: immer Nein</li>
+        <li>Meta-Beschreibung und Meta-Schlüsselwörter leer lassen</li>
+        <li>SEO-URL: ja / URL-Rewrite nutzen: Ja / Dateiendung an URL anfügen: Nein</li>
+        <li>Unicode Aliase: nein Beispiel wenn ja /döner</li>
+        <li>Seitenname auch im Titel: persönliche Entscheidung</li>
+    </ul>
+    <aside class="notes">
+        Inline Bearbeitung auf Keine weil unsere späteres Template dies nicht unterstützt
+    </aside>
+</section>
+<section data-state="joomlagreen">
+    <h1 class="noupper">.htacces</h1>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+            $ mv htaccess.txt .htaccess
+    </code></pre>
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section data-state="joomlared">
+    <h1 class="noupper">Robots: noindex, nofollow</h1>
+    <blockquote class="fragment fade visible current-fragment" data-fragment-index="0">Suchmaschinen würden sonst die Seite einlesen</blockquote>
+</section>
+<section data-state="joomlayellow">
+    <h1 class="noupper">.htpasswd</h1>
+    <blockquote class="fragment fade visible current-fragment" data-fragment-index="0">Alternative: geht bei uns nicht wegen Git Webhook</blockquote>
+    <aside class="notes">
+        Das Robtos kann man sich sparen, wenn man das komplette Verzeichnis sperrt, das wollen wir aber nicht.
+    </aside>
+</section>
+<section id="konfiguration_server">
+    <h2 class="noupper">Konfiguration: Server</h2>
+    <ul>
+        <li>Gzip-Komprimierung: ja wenn der Server kein mod_gzip hat</li>
+        <li>Fehler berichten: Entwicklung</li>
+        <li>HTTPS erzwingen: Gesamte Website</li>
+        <li>Zeitzone: Europe/Berlin</li>
+        <li>FTP nicht einstellen</li>
+        <li>Mailing einstellen (SMTP)</li>
+    </ul>
+    <aside class="notes">
+        Inline Bearbeitung auf Keine weil unsere späteres Template dies nicht unterstützt
+    </aside>
+</section>

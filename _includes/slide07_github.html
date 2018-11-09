@@ -1,0 +1,137 @@
+<section data-state="hidekick">
+    <h2 class="noupper">GitHub</h2>
+    <img src="{{ site.baseurl }}/images/github.jpg" width="700">
+</section>
+<section data-state="hidekick">
+    <h2 class="noupper">Unlimited private repositories</h2>
+    <img src="{{ site.baseurl }}/images/githubprice.jpg" width="600">
+    <p><a href="https://github.com/pricing" target="_blank">https://github.com/pricing</a></p>
+</section>
+<section data-state="hidekick">
+    <h2 class="noupper">Repo anlegen</h2>
+    <img src="{{ site.baseurl }}/images/createrepo.jpg" width="700">
+</section>
+<section data-state="hidekick">
+    <h2 class="noupper">Auf Private stellen</h2>
+    <img src="{{ site.baseurl }}/images/createrepo_2.jpg" width="700">
+</section>
+<section data-state="hidekick">
+    <h2 class="noupper">leeres Repo</h2>
+    <img src="{{ site.baseurl }}/images/cleanrepo.jpg" width="700">
+</section>
+<section>
+    <h2 class="noupper">Remote Repo anlegen</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+$ git remote add <mark class="fragment highlight-blue" data-fragment-index="1">origin</mark> <mark class="fragment highlight-red" data-fragment-index="2">git@github.com:nielsnuebel/starter.git</mark>
+$ git push -u origin master
+    </code></pre>
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section data-transition="zoom" data-background="#f6303e" data-background-transition="zoom">
+    <h2 class="noupper">Public Key fehlt</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+The authenticity of host '123.45.678.99 (123.45.678.99)' can't be established.
+RSA key fingerprint is 12:27:as:a5:76:ef:2d:36:63:1b:56:4d:eb:df:a6:48.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '123.45.678.99' (RSA) to the list of known hosts.
+Permission denied (publickey).
+fatal: Konnte nicht vom Remote-Repository lesen.
+
+Bitte stellen Sie sicher, dass die korrekten Zugriffsberechtigungen bestehen
+und das Repository existiert.
+    </code></pre>
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section>
+    <h2 class="noupper">ssh Key erstellen</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+$ cd ~/.ssh
+$ ssh-keygen -t rsa -b 4096
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/www/p12356/.ssh/id_rsa): mykey
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in mykey.
+Your public key has been saved in mykey.pub.
+The key fingerprint is:
+SHA256:B5qBkgyqDK3WbEkEiVsljI8ylQHFYk18PxHvbHfZcMU p12356@s4153
+The key's randomart image is:
++---[RSA 4096]----+
+|+BX*.  ..      ..|
+|=*B= o ..       E|
+|+B=.o o o.   . . |
+|O.=..  *o.    =  |
+|++ =  o S+.. o . |
+|. .     ... .    |
+|                 |
+|                 |
+|                 |
++----[SHA256]-----+</code></pre>
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section>
+    <h2 class="noupper">Key kopieren</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+$ cat mykey.pub</code></pre>
+     <img src="{{ site.baseurl }}/images/key.jpg" width="700">
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section>
+    <h3 class="noupper">Key speichern mit Schreibrechten</h3>
+     <img src="{{ site.baseurl }}/images/savekey.jpg" width="700">
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section>
+    <h2 class="noupper">~/.ssh/config</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+Host github.com
+    HostName www.github.com
+    IdentityFile ~/.ssh/<mark class="fragment highlight-blue" data-fragment-index="1">mykey</mark>
+    StrictHostKeyChecking no</code></pre>
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section data-transition="zoom" data-background="#76bd1d" data-background-transition="zoom">
+    <h2 class="noupper">git push</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+$ git push -u origin master
+Zähle Objekte: 8056, Fertig.
+Komprimiere Objekte: 100% (7498/7498), Fertig.
+Schreibe Objekte: 100% (8056/8056), 9.79 MiB | 3.83 MiB/s, Fertig.
+Total 8056 (delta 1780), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1780/1780), done.
+remote:
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/nielsnuebel/starter/pull/new/master
+remote:
+To github.com:nielsnuebel/starter.git
+ * [new branch]      master -> master
+Branch 'master' folgt nun Remote-Branch 'master' von 'origin'.
+    </code></pre>
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section>
+    <h3 class="noupper">Git user :(</h3>
+     <img src="{{ site.baseurl }}/images/gituser.jpg" width="700">
+<pre class=""><code class="hljs bash" data-trim data-fragment>
+$ git config user.name "Starter Server"
+$ git config user.email "guest@starter.kicktemp.com"
+</code></pre>
+
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>

@@ -1,0 +1,181 @@
+<section id="ftpundco">
+    <h1 class="noupper">Datentransfer nach Lokal?</h1>
+    <aside class="notes">
+        Was benutzt ihr so?
+    </aside>
+</section>
+<section data-transition="zoom" data-background="#f6b332" data-background-transition="zoom">
+	<h1 class="noupper">FTP</h1>
+</section>
+<section data-transition="zoom" data-background="#f6b332" data-background-transition="zoom">
+	<h1 class="noupper">Akeeba</h1>
+</section>
+<section data-transition="zoom" data-background="#76bd1d" data-background-transition="zoom">
+	<h1 class="noupper">git</h1>
+</section>
+<section>
+    <h1 class="noupper">git einrichten</h1>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+            $ cd joomlaverzeichnis
+            $ git init
+    </code></pre>
+    <blockquote class="fragment fade visible current-fragment" data-fragment-index="0">.git Verzeichnis per .htaccess gegen Zugriffe von außen schützen</blockquote>
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>
+<section data-state="joomlagreen">
+    <h2 class="noupper">.git Verzeichnis schützen</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+            $ echo -e 'Order allow,deny\nDeny from all' >> .git/.htaccess
+    </code></pre>
+    <aside class="notes">
+    </aside>
+</section>
+<section>
+    <h2 class="noupper">.gitignore</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+/.idea/
+.DS_Store
+.htaccess
+/cache/*
+!/cache/index.html
+!/administator/cache/index.html
+/administator/cache/*
+/administrator/components/com_akeeba/backup/*
+!/administator/logs/index.html
+/administator/logs/*
+!/tmp/index.html
+/tmp/*
+/configuration.php
+    </code></pre>
+    <aside class="notes">
+    </aside>
+</section>
+<section>
+    <h2 class="noupper">.gitignore prüfen</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+$ git status
+Auf Branch master
+
+Noch keine Commits
+
+Unversionierte Dateien:
+  (benutzen Sie "git add <Datei>...", um die Änderungen zum Commit vorzumerken)
+
+	.gitignore
+	LICENSE.txt
+	README.txt
+	administrator/
+	bin/
+	cache/
+	cli/
+	components/
+	images/
+	includes/
+	index.php
+	language/
+	layouts/
+	libraries/
+	media/
+	modules/
+	plugins/
+	robots.txt
+	templates/
+	web.config.txt
+
+nichts zum Commit vorgemerkt, aber es gibt unversionierte Dateien
+(benutzen Sie "git add" zum Versionieren)
+    </code></pre>
+    <aside class="notes">
+    </aside>
+</section>
+<section data-transition="zoom" data-background="#f6b332" data-background-transition="zoom">
+	<h1 class="noupper">Datenbank?</h1>
+</section>
+<section data-transition="zoom" data-background="#76bd1d" data-background-transition="zoom">
+    <h2 class="noupper">Shell Script MySQL Dump</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+$ mkdir database
+$ echo -e 'Order allow,deny\nDeny from all' >> database/.htaccess</code></pre>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+#!/bin/bash
+BACKUP="/home/www/p123456/html/joomla/database/db.sql"
+
+MUSER="USER"
+MPASS="PASSWORD"
+MDB="DATABASE"
+
+MHOST="HOST"
+
+# Detect paths
+MYSQL=$(which mysql)
+MYSQLDUMP="$(which mysqldump)"
+
+# make sure we can connect to server
+$MYSQL -u $MUSER -p$MPASS -h $MHOST -e "use $MDB" &>/dev/null
+if [ $? -ne 0 ]
+then
+echo "Error - Cannot connect to mysql server using given username, password or database does not exits!"
+exit 1
+fi
+
+if [ -f $BACKUP ];
+then
+echo "MySQL Backup $BACKUP remove"
+rm -f $BACKUP
+else
+echo "MySQL Backup $BACKUP does not exists"
+touch $BACKUP
+fi
+
+echo "Begin MySQL Backup $BACKUP"
+$MYSQLDUMP -u $MUSER -p$MPASS -h $MHOST $MDB > $BACKUP
+echo "done"</code></pre>
+    <p>database/backup.sh</p>
+    <aside class="notes">
+    </aside>
+</section>
+<section>
+    <h2 class="noupper">.gitignore anpassen</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+/.idea/
+.DS_Store
+.htaccess
+/cache/*
+!/cache/index.html
+!/administator/cache/index.html
+/administator/cache/*
+/administrator/components/com_akeeba/backup/*
+!/administator/logs/index.html
+/administator/logs/*
+!/tmp/index.html
+/tmp/*
+/configuration.php
+<mark class="fragment" data-fragment-index="1"><mark class="fragment highlight-red" data-fragment-index="2">/database/backdb.sh</mark></mark>
+    </code></pre>
+    <aside class="notes">
+    </aside>
+</section>
+<section>
+    <h2 class="noupper">Datenbank Backup</h2>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+$ cd database/ && sh backdb.sh && ..
+MySQL Backup /home/www/p123456/html/joomla/database/db.sql remove
+Begin MySQL Backup /home/www/p123456/html/joomla/database/db.sql
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+done
+    </code></pre>
+    <aside class="notes">
+    </aside>
+</section>
+<section>
+    <h1 class="noupper">Code versionieren</h1>
+    <pre class=""><code class="hljs bash" data-trim data-fragment>
+$ git add .
+$ git commit -m "init"
+    </code></pre>
+    <aside class="notes">
+        Wenn wir dies nicht tun gibt es ein 404 im Frontend, wenn wir woanders hingehen außer auf der Startseite
+    </aside>
+</section>

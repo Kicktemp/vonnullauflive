@@ -133,6 +133,11 @@ svg.kicktemp {
   fill: #fff;
 }
 
+html.animationgif svg.kicktemp,
+html.hidekick svg.kicktemp {
+  display:none;
+}
+
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------

@@ -1,0 +1,104 @@
+<section id="templates">
+    <h1>Server</h1>
+    <aside class="notes">
+        Was benutzt ihr so?
+    </aside>
+</section>
+<section style="text-align: left;">
+    <h3 class="noupper">Joomla Technische Anforderungen</h3>
+    <p>empfohlen</p>
+    <ul>
+        <li>PHP 5.6 oder 7.0+</li>
+        <li class="fragment">MySQL 5.5.3+ <small>(InnoDB Unterstützung erforderlich)</small></li>
+        <li class="fragment">Apache 2.4+ <small>(mit mod_mysql, mod_xml, und mod_zlib, <span class="fragment">mod_rewrite</span>)</small></li>
+        <li class="fragment">Nginx 1.8+</li>
+    </ul>
+    <aside class="notes">
+        Mac
+    </aside>
+</section>
+<section style="text-align: left;">
+    <h2 class="noupper">Server Anforderung</h2>
+    <ul>
+        <li>LAMP <span class="fragment">(Linux, Apache, MySQL, PHP)</span></li>
+        <li class="fragment">Shell Zugriff</li>
+        <li class="fragment">SSH</li>
+        <li class="fragment">git</li>
+        <li class="fragment">rsync</li>
+    </ul>
+    <aside class="notes">
+        Mac
+    </aside>
+</section>
+<section>
+    <h3 class="noupper">.bash_profile / .zprofile</h3>
+<pre class=""><code class="hljs bash" data-trim data-fragment>
+        <mark class="fragment" data-fragment-index="0">alias sshkey="cat ~/.ssh/<mark class="fragment highlight-blue" data-fragment-index="1">id_rsa.pub</mark> | pbcopy && echo ''"</mark>
+        <mark class="fragment" data-fragment-index="2">$ sshkey</mark>
+        <mark class="fragment" data-fragment-index="3">Copied to clipboard.</mark>
+        <mark class="fragment" data-fragment-index="4">alias sshstarter="ssh <mark class="fragment highlight-blue" data-fragment-index="5">p123456</mark>@<mark class="fragment highlight-blue" data-fragment-index="6">123.45.67.89</mark>"</mark>
+        <mark class="fragment" data-fragment-index="7">$ sshstarter</mark>
+        <mark class="fragment" data-fragment-index="7">p123456@123.45.67.89's password:<mark class="fragment" data-fragment-index="8">***</mark></mark>
+        <mark class="fragment" data-fragment-index="9">$ echo -e '<mark class="fragment" data-fragment-index="10"><mark class="fragment highlight-blue" data-fragment-index="11">CMD + V</mark></mark><mark class="fragment" data-fragment-index="12">\n' >> ~/.ssh/authorized_keys</mark></mark>
+        <mark class="fragment" data-fragment-index="13">$ chmod 0600 ~/.ssh/authorized_keys</mark>
+        <mark class="fragment" data-fragment-index="14">$ exit</mark>
+        <mark class="fragment" data-fragment-index="15">$ sshstarter</mark>
+        <mark class="fragment" data-fragment-index="15">p123456:~ ></mark>
+   </code></pre>
+</section>
+<section>
+    <h3 class="noupper">Joomla herunterladen und installieren</h3>
+<pre class=""><code class="hljs bash" data-trim data-fragment>
+        <mark class="fragment" data-fragment-index="0">p123456:~ > cd html/joomla/ </mark>
+        <mark class="fragment" data-fragment-index="1">p123456:/home/www/p123456/html/joomla > wget https://downloads.joomla.org/cms/joomla3/3-9-0/joomla_3-9-0-stable-full_package-zip?format=zip</mark>
+        <mark class="fragment" data-fragment-index="2">$ unzip joomla_3-9-0-stable-full_package-zip\?format\=zip</mark>
+        <mark class="fragment" data-fragment-index="3">$ rm joomla_3-9-0-stable-full_package-zip\?format\=zip</mark>
+   </code></pre>
+</section>
+<section>
+    <h3 class="noupper">Joomla herunterladen und installieren</h3>
+<pre class=""><code class="hljs bash" data-trim data-fragment>
+        <mark class="fragment" data-fragment-index="0">p123456:/home/www/p123456/html/joomla > ll</mark>
+        <mark class="fragment" data-fragment-index="1">insgesamt 13616
+        drwxr-xr-x 18 p12356 users     4096  9. Nov 00:14 ./
+        drwxr-xr-x  5 p12356 users     4096  6. Nov 19:23 ../
+        drwxr-xr-x 11 p12356 users     4096 30. Okt 01:59 administrator/
+        drwxr-xr-x  2 p12356 users     4096 30. Okt 01:59 bin/
+        drwxr-xr-x  2 p12356 users     4096 30. Okt 01:59 cache/
+        drwxr-xr-x  2 p12356 users     4096 30. Okt 01:59 cli/
+        drwxr-xr-x 20 p12356 users     4096 30. Okt 01:59 components/
+        -rw-r--r--  1 p12356 users     3005 30. Okt 01:59 htaccess.txt
+        drwxr-xr-x  5 p12356 users     4096 30. Okt 01:59 images/
+        drwxr-xr-x  2 p12356 users     4096 30. Okt 01:59 includes/
+        -rw-r--r--  1 p12356 users     1420 30. Okt 01:59 index.php
+        drwxr-xr-x 14 p12356 users     4096 30. Okt 01:59 installation/
+        drwxr-xr-x  4 p12356 users     4096 30. Okt 01:59 language/
+        drwxr-xr-x  5 p12356 users     4096 30. Okt 01:59 layouts/
+        drwxr-xr-x 12 p12356 users     4096 30. Okt 01:59 libraries/
+        -rw-r--r--  1 p12356 users    18092 30. Okt 01:59 LICENSE.txt
+        drwxr-xr-x 29 p12356 users     4096 30. Okt 01:59 media/
+        drwxr-xr-x 27 p12356 users     4096 30. Okt 01:59 modules/
+        drwxr-xr-x 19 p12356 users     4096 30. Okt 01:59 plugins/
+        -rw-r--r--  1 p12356 users     4883 30. Okt 01:59 README.txt
+        -rw-r--r--  1 p12356 users      836 30. Okt 01:59 robots.txt.dist
+        drwxr-xr-x  5 p12356 users     4096 30. Okt 01:59 templates/
+        drwxr-xr-x  2 p12356 users     4096 30. Okt 01:59 tmp/
+        -rw-r--r--  1 p12356 users     1690 30. Okt 01:59 web.config.txt</mark>
+   </code></pre>
+</section>
+<section data-state="hidekick">
+    <img src="{{ site.baseurl }}/images/joomlainstallieren.jpg" width="900">
+</section>
+<section data-state="hidekick">
+    <img src="{{ site.baseurl }}/images/eigentuemer.jpg" width="900 ">
+</section>
+<section>
+    <h3 class="noupper">Eigentümerschaft bestätigen</h3>
+<pre class=""><code class="hljs bash" data-trim data-fragment>
+        $ rm -f installation/_Joomla4ZODF7Kns5hSzLrF9Qhgj.txt
+   </code></pre>
+</section>
+<section data-state="hidekick">
+    <h1 class="noupper">Joomla ist installiert</h1>
+    <img src="{{ site.baseurl }}/images/joomlafertig.jpg" width="900 ">
+</section>
